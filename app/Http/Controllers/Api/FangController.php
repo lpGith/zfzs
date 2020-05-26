@@ -124,5 +124,5 @@ class FangController extends Controller
             return ['status' => 10009, 'msg' => '没有存数据', 'data' => []];
         }
     }
-    
+
 }

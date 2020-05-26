@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        //接口登录
+        'apiweb' => [
+            'driver' => 'session',
+            'provider' => 'apiusers',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +75,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Model\User::class,
+        ],
+        'apiusers' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\ApiUser::class,
         ],
 
         // 'users' => [
