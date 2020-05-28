@@ -3,7 +3,7 @@
 namespace App\Model;
 
 
-class FangAttr extends Base
+class Fangattr extends Base
 {
     //获取所有属性
     public function getList()

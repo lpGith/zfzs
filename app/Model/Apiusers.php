@@ -2,13 +2,15 @@
 
 namespace App\Model;
 
+use App\Model\Traits\Btn;
 use App\Observers\ApiUserObserver;
-use IIlluminate\Foundation\Auth\User as UserAuth;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 
-class ApiUser extends UserAuth
+class Apiusers extends AuthUser
 {
-    use SoftDeletes;
+    use SoftDeletes, HasApiTokens, Btn;
 
 
     //软删除标识字段
@@ -20,6 +22,6 @@ class ApiUser extends UserAuth
     protected static function boot()
     {
         parent::boot();
-        self::observer(ApiUserObserver::class);
+        self::observe(ApiUserObserver::class);
     }
 }

@@ -3,27 +3,31 @@
 
 namespace App\Model\Traits;
 
-trait Btn {
+trait Btn
+{
     /**
      * @param string $route 路由名
      * @return string
      */
-    public function editBtn($route) { // {{ route('admin.user.edit',$item) }}
-
-        if (auth()->user()->username != config('rbac.super') && !in_array($route, request()->auths)) {
-           return '';
-        }
-        return '<a href="'.route($route,$this).'" class="label label-secondary radius">修改</a>';
-    }
-    /**
-     * @param string $route 路由名
-     * @return string
-     */
-    public function deleteBtn(string $route) { // {{ route('admin.user.edit',$item) }}
+    public function editBtn($route)
+    { // {{ route('admin.user.edit',$item) }}
 
         if (auth()->user()->username != config('rbac.super') && !in_array($route, request()->auths)) {
             return '';
         }
-        return '<a href="'.route($route,$this).'" class="label label-danger radius">删除</a>';
+        return '<a href="' . route($route, $this) . '" class="label label-secondary radius">修改</a>';
+    }
+
+    /**
+     * @param string $route 路由名
+     * @return string
+     */
+    public function deleteBtn(string $route)
+    { // {{ route('admin.user.edit',$item) }}
+
+        if (auth()->user()->username != config('rbac.super') && !in_array($route, request()->auths)) {
+            return '';
+        }
+        return '<a href="' . route($route, $this) . '" class="label label-danger radius">删除</a>';
     }
 }

@@ -2,10 +2,18 @@
 
 namespace App\Model;
 
+use App\Model\Traits\Btn;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Base extends Model
 {
+    //软删除
+    use SoftDeletes, Btn;
+
+    //软删除标识
+    protected $dates = ['deleted_at'];
+
     protected $guarded = [];
 
 

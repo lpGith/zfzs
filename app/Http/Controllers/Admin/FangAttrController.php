@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\FangAttr;
+use App\Model\Fangattr;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -12,10 +12,10 @@ class FangAttrController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @param FangAttr $fangAttr
+     * @param Fangattr $fangAttr
      * @return void
      */
-    public function index(FangAttr $fangAttr)
+    public function index(Fangattr $fangAttr)
     {
         $data = $fangAttr->getList();
         return view('admin.fangattr.index', compact('data'));
@@ -29,7 +29,7 @@ class FangAttrController extends BaseController
     public function create()
     {
         //获取顶级属性
-        $data = FangAttr::where('pid', 0)->get();
+        $data = Fangattr::where('pid', 0)->get();
 
         return view('admin.fangattr.create', compact('data'));
     }
@@ -51,7 +51,7 @@ class FangAttrController extends BaseController
         $data = $request->except(['_token', 'file']);
         $data['field_name'] = !empty($data['field_name']) ? $data['field_name'] : '';
 
-        FangAttr::create($data);
+        Fangattr::create($data);
         return view('admin.fangattr.index');
     }
 
@@ -86,10 +86,10 @@ class FangAttrController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param FangAttr $fangAttr
+     * @param Fangattr $fangAttr
      * @return void
      */
-    public function edit(FangAttr $fangAttr)
+    public function edit(Fangattr $fangAttr)
     {
         //获取顶级属性
         $data = $fangAttr->where('pid', 0)->get();
@@ -100,11 +100,11 @@ class FangAttrController extends BaseController
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param FangAttr $fangAttr
+     * @param Fangattr $fangAttr
      * @return void
      * @throws ValidationException
      */
-    public function update(Request $request, FangAttr $fangAttr)
+    public function update(Request $request, Fangattr $fangAttr)
     {
         //表单验证
         $this->validate($request, [
@@ -122,11 +122,11 @@ class FangAttrController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param FangAttr $fangAttr
+     * @param Fangattr $fangAttr
      * @return array
      * @throws Exception
      */
-    public function destroy(FangAttr $fangAttr)
+    public function destroy(Fangattr $fangAttr)
     {
         //
         $fangAttr->delete();

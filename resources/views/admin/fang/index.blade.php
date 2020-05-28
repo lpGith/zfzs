@@ -107,7 +107,7 @@
   // 实现改变房源状态点击事件
   function changeFangStatus(obj,id,status) {
     // 请求的URL地址
-    let url = "{{ route('admin.fang.changestatus') }}";
+    let url = "{{ route('admin.fang.ChangeStatus') }}";
     $.get(url, {
       id,
       status
@@ -166,7 +166,7 @@
       if (id.length > 0) {
         // 发起ajax
         $.ajax({
-          url: "{{ route('admin.user.delall') }}",
+          url: "{{ route('admin.user.delAll') }}",
           data: {id, _token},
           type: 'DELETE'
         }).then(ret => {

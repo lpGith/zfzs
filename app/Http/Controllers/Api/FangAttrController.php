@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
-use App\Model\FangAttr;
+use App\Model\Fangattr;
 
 class FangAttrController extends Controller
 {
@@ -31,7 +31,7 @@ class FangAttrController extends Controller
     {
         $arr = [];
         foreach ($this->_attr as $k => $v) {
-            $arr[$k] = FangAttr::where('pid', $v)->get(['id', 'name']);
+            $arr[$k] = Fangattr::where('pid', $v)->get(['id', 'name']);
         }
         return $arr;
     }

@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
 
     //登录界面
-    public function index(Request $request)
+    public function index()
     {
         if (auth()->check()) {
             return redirect(route('admin.index'));

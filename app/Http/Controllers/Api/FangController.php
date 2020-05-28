@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Model\Fang;
-use App\Model\FangAttr;
+use App\Model\Fangattr;
 use Elasticsearch\ClientBuilder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,9 +30,9 @@ class FangController extends Controller
         //要获取的属性
         $field_name = $request->get('field');
 
-        $id = FangAttr::where('field_name', $field_name)->value('id');
+        $id = Fangattr::where('field_name', $field_name)->value('id');
 
-        return FangAttr::where('pid', $id)->limit(4)->get(['id', 'name', 'icon']);
+        return Fangattr::where('pid', $id)->limit(4)->get(['id', 'name', 'icon']);
     }
 
     /**
@@ -65,10 +65,10 @@ class FangController extends Controller
 
         //房屋配置
         $configAttr = explode(',', $fang->fang_config);
-        $fang->config = FangAttr::whereIn('id', $configAttr)->get(['id', 'name', 'icon']);
+        $fang->config = Fangattr::whereIn('id', $configAttr)->get(['id', 'name', 'icon']);
 
         //房屋朝向
-        $fang->direction = FangAttr::where('id', $fang->fang_direction)->value('name');
+        $fang->direction = Fangattr::where('id', $fang->fang_direction)->value('name');
 
         //房屋图片
         $fang->picList = array_map(function ($item) {

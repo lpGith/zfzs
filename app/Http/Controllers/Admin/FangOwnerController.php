@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\FangOwnerExport;
 use App\Model\FangOwner;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -25,7 +25,7 @@ class FangOwnerController extends BaseController
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return void
      */
     public function create()
     {
@@ -37,6 +37,7 @@ class FangOwnerController extends BaseController
      *
      * @param Request $request
      * @return void
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
@@ -98,7 +99,7 @@ class FangOwnerController extends BaseController
         //图片列表
         $picList = explode('#', $fangOwner->pic);
         array_map(function ($item) {
-            echo "<div><img src=$item width='150px;'/></div>";
+            echo "<div><img src=$item style='width:'150px;'/></div>";
         }, $picList);
 
         return '';
@@ -109,28 +110,28 @@ class FangOwnerController extends BaseController
      */
     public function exports()
     {
-        Excel::download(new FangOwnerExport(), 'fangdong.xlsx');
+        return Excel::download(new FangOwnerExport(), 'fangdong.xlsx');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param FangOwner $fangOwner
      * @return void
      */
-    public function edit($id)
+    public function edit(FangOwner $fangOwner)
     {
-        //
+        return view('admin.fangowner.edit', compact('fangOwner'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param int $id
+     * @param FangOwner $fangOwner
      * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FangOwner $fangOwner)
     {
         //
     }
@@ -138,10 +139,10 @@ class FangOwnerController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param FangOwner $fangOwner
      * @return void
      */
-    public function destroy($id)
+    public function destroy(FangOwner $fangOwner)
     {
         //
     }

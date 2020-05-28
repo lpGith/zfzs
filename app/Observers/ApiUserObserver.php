@@ -9,12 +9,12 @@
 namespace App\Observers;
 
 
-use App\Model\ApiUser;
+use App\Model\Apiusers;
 
 class ApiUserObserver
 {
     //添加动作之前
-    public function creating(ApiUser $apiUser)
+    public function creating(Apiusers $apiUser)
     {
         $apiUser->password = bcrypt(request()->get('password'));
     }

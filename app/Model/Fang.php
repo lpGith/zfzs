@@ -12,7 +12,7 @@ class Fang extends Base
     //模型关联 获取房东信息
     public function owner()
     {
-        return $this->belongsTo('FangOwner', 'fang_owner');
+        return $this->belongsTo(FangOwner::class, 'fang_owner');
     }
 
     //读取器
@@ -23,7 +23,7 @@ class Fang extends Base
      */
     public function getFangClassAttribute()
     {
-        return FangAttr::where('id', $this->attributes['fang_rent_class'])->value('name');
+        return Fangattr::where('id', $this->attributes['fang_rent_class'])->value('name');
     }
 
     /**
@@ -32,7 +32,7 @@ class Fang extends Base
      */
     public function getDirectionAttribute()
     {
-        return FangAttr::where('id', $this->attributes['fang_direction'])->value('name');
+        return Fangattr::where('id', $this->attributes['fang_direction'])->value('name');
     }
 
     /**
@@ -103,17 +103,17 @@ class Fang extends Base
         //省份
         $cityData = City::where('pid', 0)->get();
         //租期方式
-        $fang_rent_type_id = FangAttr::where('field_name', 'fang_rent_type')->value('id');
-        $fang_rent_type_data = FangAttr::where('pid', $fang_rent_type_id)->get();
+        $fang_rent_type_id = Fangattr::where('field_name', 'fang_rent_type')->value('id');
+        $fang_rent_type_data = Fangattr::where('pid', $fang_rent_type_id)->get();
         //朝向
-        $fang_direction_id = FangAttr::where('field_name', 'fang_direction')->value('id');
-        $fang_direction_data = FangAttr::where('pid', $fang_direction_id)->get();
+        $fang_direction_id = Fangattr::where('field_name', 'fang_direction')->value('id');
+        $fang_direction_data = Fangattr::where('pid', $fang_direction_id)->get();
         //租赁方式
-        $fang_rent_class_id = FangAttr::where('field_name', 'fang_rent_class')->value('id');
-        $fang_rent_class_data = FangAttr::where('pid', $fang_rent_class_id)->get();
+        $fang_rent_class_id = Fangattr::where('field_name', 'fang_rent_class')->value('id');
+        $fang_rent_class_data = Fangattr::where('pid', $fang_rent_class_id)->get();
         //配套设施
-        $fang_config_id = FangAttr::where('field_name', 'fang_config')->value('id');
-        $fang_config_data = FangAttr::where('pid', $fang_config_id)->get();
+        $fang_config_id = Fangattr::where('field_name', 'fang_config')->value('id');
+        $fang_config_data = Fangattr::where('pid', $fang_config_id)->get();
 
         return [
             'ownerData' => $ownerData,
