@@ -2,9 +2,8 @@
 
 namespace App\Model;
 
-use Illuminate\Database\Eloquent\Model;
 
-class FangOwner extends Model
+class FangOwner extends Base
 {
     //
 }

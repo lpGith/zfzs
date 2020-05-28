@@ -114,7 +114,7 @@
         let url = $(this).attr('href');
         // 发起一个delete请求
         $.ajax({
-            url,
+            url:url,
             data: {_token},
             type: 'DELETE',
             dataType: 'json'

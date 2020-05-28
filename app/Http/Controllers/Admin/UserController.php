@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\Mail;
 
 //用户控制器
 class UserController extends BaseController
@@ -36,12 +38,16 @@ class UserController extends BaseController
         //参数
         $params = $request->except(['_token', 'password_confirmation']);
 
-        $ret = User::create($params);
-        if ($ret) {
+        $userModel = User::create($params);
+        $pwd = $params['password'];
+        //发送邮件
+        Mail::send('mail.useradd', compact('userModel', 'pwd'), function (Message $message) use ($userModel) {
+            $message->to($userModel->email);
+            $message->subject('用户添加成功通知邮件');
+        });
+
             return redirect(route('admin.user.index'))->with('success', '添加用户成功');
-        } else {
-            return redirect(route('admin.user.store'))->withErrors(['error' => '添加用户失败']);
-        }
+
     }
 
 

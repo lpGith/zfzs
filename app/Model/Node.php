@@ -12,6 +12,13 @@ namespace App\Model;
 class Node extends Base
 {
 
+    //获取所有权限节点
+    public function getList()
+    {
+        $data = self::get()->toArray();
+        return $this->treeLevel($data);
+    }
+
     public function treeData($node)
     {
         $nodeObj = Node::where('is_menu', '1');

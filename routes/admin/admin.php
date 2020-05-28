@@ -42,6 +42,35 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         //用户修改
         Route::get('user/edit/{$id}', 'UserController@edit')->name('admin.user.edit');
         Route::put('user/update/{$id}', 'UserController@update')->name('admin.user.update');
+
+
+        //角色 资源路由
+        Route::resource('role', 'RoleController');
+        // 分配权限
+        Route::get('role/node/{role}', 'RoleController@node')->name('admin.role.node');
+        Route::post('role/node/{role}', 'RoleController@nodeSave')->name('admin.role.node');
+
+
+        //房源
+        //改变房源状态
+        Route::get('fang/ChangeStatus', 'FangController@ChangeStatus')->name('admin.fang.ChangeStatus');
+        Route::resource('fang', 'FangController');
+
+
+        //房源属性
+        Route::resource('fangattr', 'FangAttrController');
+        //文件上传
+        Route::post('fang/upfile', 'FangAttrController@upfile')->name('admin.fang.upfile');
+
+        //房东信息
+        Route::resource('fangowner', 'FangOwnerController');
+        //文件上传
+        Route::post('fangowner/upfile', 'FangOwnerController@upfile')->name('admin.fangowner.upfile');
+        Route::get('fangowner/delfile', 'FangOwnerController@delfile')->name('admin.fangowner.delfile');
+        Route::get('fangowner/exports', 'FangOwnerController@exports')->name('admin.fangowner.exports');
+
+        // 预约资源管理
+        Route::resource('notice','NoticeController');
     });
 
 
