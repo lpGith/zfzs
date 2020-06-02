@@ -66,7 +66,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         //房东信息
         Route::get('fangowner/exports', 'FangOwnerController@exports')->name('fangowner.exports');
-
         //文件上传
         Route::post('fangowner/upfile', 'FangOwnerController@upfile')->name('fangowner.upfile');
         Route::get('fangowner/delfile', 'FangOwnerController@delfile')->name('fangowner.delfile');
@@ -74,6 +73,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('fangowner', 'FangOwnerController');
         // 预约资源管理
         Route::resource('notice', 'NoticeController');
+
+        //文章
+        //文件上传
+        Route::post('article/upfile','ArticleController@upfile')->name('article.upfile');
+        Route::resource('article','ArticleController');
 
         Route::resource('apiuser', 'ApiUserController');
     });

@@ -48,6 +48,30 @@ return [
             'root' => storage_path('app'),
         ],
 
+         'article' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/article'),
+        ],
+
+         // 房源属性
+        'fangattr' => [
+            'driver' => 'local',
+            // 上传图片的路径
+            'root' => public_path('uploads/fangattr'),
+        ],
+        // 房东
+        'fangowner' => [
+            'driver' => 'local',
+            // 上传图片的路径
+            'root' => public_path('uploads/fangowner'),
+        ],
+        // 身份认证
+        'card' => [
+            'driver' => 'local',
+            // 上传图片的路径
+            'root' => public_path('uploads/card'),
+        ],
+        
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

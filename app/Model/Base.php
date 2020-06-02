@@ -17,6 +17,14 @@ class Base extends Model
     protected $guarded = [];
 
 
+    /**
+     * 递归获取无限级分类
+     * @param $data
+     * @param int $pid
+     * @param string $html
+     * @param int $level
+     * @return array
+     */
     public function treeLevel($data, $pid = 0, $html = '--', $level = 0)
     {
         static $arr = [];

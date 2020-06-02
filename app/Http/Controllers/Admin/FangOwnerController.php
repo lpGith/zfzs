@@ -19,6 +19,7 @@ class FangOwnerController extends BaseController
     public function index()
     {
         $data = FangOwner::paginate($this->pageSize);
+
         return view('admin.fangowner.index', compact('data'));
     }
 

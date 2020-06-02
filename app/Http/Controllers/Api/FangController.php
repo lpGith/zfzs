@@ -75,6 +75,8 @@ class FangController extends Controller
             return config('url.domain') . $item;
         }, explode('#', $fang->fang_pic));
 
+        $fang->ownerPhone = $owner->phone;
+
         return $fang;
     }
 
