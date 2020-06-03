@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -19,16 +19,10 @@ class LoginController extends Controller
 
 
     //登录
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        //表单验证
-        $post = $this->validate($request, [
-            'username' => 'required',
-            'password' => 'required'
-        ], [
-            'username.required' => '用户名不能为空',
-            'password.required' => '密码不能为空'
-        ]);
+        //参数
+        $post = $request->except('_token');
 
         $ret = auth()->attempt($post);
 

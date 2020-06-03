@@ -48,6 +48,7 @@ return [
             'root' => storage_path('app'),
         ],
 
+        //文章
          'article' => [
             'driver' => 'local',
             'root' => public_path('uploads/article'),
@@ -71,7 +72,7 @@ return [
             // 上传图片的路径
             'root' => public_path('uploads/card'),
         ],
-        
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

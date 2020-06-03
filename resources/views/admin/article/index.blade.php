@@ -77,7 +77,7 @@
                 {data: 'id', className: 'text-c'},
                 {data: 'title'},
                 {data: 'created_at'},
-                {data: 'aaa', defaultContent: '默认值'}
+                {data: 'aaa', defaultContent: '默认值'},
             ],
             // 回调方法
             // row 当前行的dom对象
@@ -143,6 +143,7 @@
         // async await  promise  异步变同步
         async function delArticle(evt, obj) {
             evt.preventDefault();
+
             // 请求的URL地址
             let url = $(obj).attr('href');
             // 发起ajax

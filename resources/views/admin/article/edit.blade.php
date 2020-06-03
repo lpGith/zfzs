@@ -72,7 +72,7 @@
       new Vue({
         el: '.page-container',
         data: {
-          info:{!! $article !!}
+          info:{!! $article !!} //不转义
         },
         // 组件挂载完毕
         mounted() {
